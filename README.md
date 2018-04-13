@@ -1,5 +1,5 @@
 # Bugsnag Plugin
-
+Testing updateing to latest bugsnag
 [![Build Status](https://travis-ci.org/steefaan/cakephp-bugsnag.svg?branch=master)](https://travis-ci.org/steefaan/cakephp-bugsnag)
 [![codecov.io](https://codecov.io/github/steefaan/cakephp-bugsnag/coverage.svg?branch=master)](https://codecov.io/github/steefaan/cakephp-bugsnag?branch=master)
 
