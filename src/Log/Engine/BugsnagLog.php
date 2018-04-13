@@ -2,8 +2,8 @@
 
 namespace Bugsnag\Log\Engine;
 
-use Bugsnag_Client;
-use Bugsnag_Error;
+use Bugsnag\Client;
+use Bugsnag\Error;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Event\EventManager;
@@ -51,7 +51,7 @@ class BugsnagLog extends BaseLog
     /**
      * Client instance.
      *
-     * @var \Bugsnag_Client
+     * @var Client
      */
     protected $_client = null;
 
@@ -65,7 +65,7 @@ class BugsnagLog extends BaseLog
     {
         parent::__construct($config);
 
-        $client = new Bugsnag_Client(Configure::read('Bugsnag.apiKey'));
+        $client = new Client(Configure::read('Bugsnag.apiKey'));
 
         foreach ($this->config() as $key => $value) {
             $method = 'set' . ucfirst($key);
@@ -74,7 +74,7 @@ class BugsnagLog extends BaseLog
             }
         }
 
-        $client->setBeforeNotifyFunction(function(Bugsnag_Error $error) {
+        $client->setBeforeNotifyFunction(function(Error $error) {
             $event = new Event('Log.Bugsnag.beforeNotify', $this, ['error' => $error]);
             EventManager::instance()->dispatch($event);
         });
@@ -88,7 +88,7 @@ class BugsnagLog extends BaseLog
      * @param Bugsnag_Client $client
      * @return void
      */
-    public function setClient(Bugsnag_Client $client)
+    public function setClient(Client $client)
     {
         $this->_client = $client;
     }
